@@ -21,19 +21,13 @@ function App() {
 
   return (
 
-        <div className="App">
+      <div className="App">
 
-          <Header />
+        <Header />
         
-          <div className="container centered"
-          style={{
-            display: "flex",
-            margin: `1% auto`,
-            flexDirection: "column",
-          }}>
+        <div className="container centered">
           
           <Nav />
-
           <Content gridColumnStyling={gridColumnStyling} />
 
         </div>
