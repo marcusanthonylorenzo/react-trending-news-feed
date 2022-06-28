@@ -1,5 +1,11 @@
 # Minimalist Trending News Feed with NY Times API
-#### (Work in progress - a project for personal use, as well as fun.)
+#### (Work in progress - a project for personal use)
+
+### Real-time rendering for real-time news.
+- Search function to sift articles.
+- Responsive albeit simple interface.
+
+
 ### Ever get tired of cluttered news-sites?
 
 
