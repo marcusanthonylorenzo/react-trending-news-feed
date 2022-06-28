@@ -65,11 +65,7 @@ const Content = (props) => {
     });
     setNewsUpdates(newList)
   }
-
-  // const substringSearch = (str) => {
-
-  // }
-
+  
   const addAnimate = (type) => {
     setAnimate(type);
   }
