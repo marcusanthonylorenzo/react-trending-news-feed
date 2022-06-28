@@ -1,17 +1,48 @@
 import { React, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import Api from './Api'
+import axios from 'axios'
 
 
 const Content = (props) => {
 
-  useEffect(() => Api() )
-  const readLocalStorage = () => JSON.parse(localStorage.getItem("news"))
-
   const [searchFilter, setSearchFilter] = useState("");
-  const [newsUpdates, setNewsUpdates] = useState(readLocalStorage)
   const [animate, setAnimate] = useState("");
+  const [requestIsCancelled, setRequestIsCancelled] = useState(true)
+  const [articles, setArticles] = useState([])
 
+  //handle change to delay onChange to the last character match
+  useEffect(() => {
+
+    let cancelToken = axios.CancelToken.source();
+    const getArticles = async () => {
+      try {
+        const articleList = await Api(cancelToken);
+        setArticles(articleList);
+        console.log(articleList)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getArticles();
+
+  }, [])
+
+
+  useEffect(() =>{
+    //request cleanup
+    if (!requestIsCancelled) {
+      console.log('done typing')
+    }
+    return () => {
+      setRequestIsCancelled(false);
+      console.log("still typing", requestIsCancelled);
+    }
+  }, [requestIsCancelled])
+
+
+  const readLocalStorage = () => JSON.parse(localStorage.getItem("news"))
+  const [newsUpdates, setNewsUpdates] = useState(readLocalStorage)
   useEffect(() => setNewsUpdates(readLocalStorage), [])
 
 
@@ -20,16 +51,24 @@ const Content = (props) => {
     setSearchFilter(target);
 
     const checkStorage = readLocalStorage();
-    let newList = checkStorage.filter(index => {
-      if (index.section === target){
-        return index.section
-      } else {
-        return;
-      }
+    let newList = checkStorage.filter((index, i) => {
+      const indexTheIndex = Object.values({...index})
+        for (const articleInfo of indexTheIndex) {
+          console.log(indexTheIndex[i])
+          if (indexTheIndex.includes(target)){
+            return index.section
+          } else {
+            return;
+          }
+        }
+
     });
     setNewsUpdates(newList)
   }
 
+  // const substringSearch = (str) => {
+
+  // }
 
   const addAnimate = (type) => {
     setAnimate(type);
@@ -90,21 +129,24 @@ const Content = (props) => {
 
   return (
     <div className={`content-area centered`} style={props.gridColumnStyling}>
-
       <div id="main-title">
-        <div className="header-search">
-          <form className="header-search form border-inset centered"
+        <div className="header-search centered">
+          <form className="header-search form border border-inset centered"
             onSubmit={(e) => {
               e.preventDefault()
               console.log("subbed")
             }}>
-            <input className="" id="searchbox" type="text" placeholder="Search articles" style={{
-              fontSize: `20px`,
-              width: `80%`,
-              margin: `2%`,
-              textDecoration: `none`,
-              borderStyle: `none`
-            }} value={searchFilter} onChange={filterByText.bind(this)} ></input>
+            <input className="" id="searchbox" type="text"
+              placeholder="Search 'arts', 'us', 'politics'..."
+              style={{
+                fontSize: `20px`,
+                width: `80%`,
+                height: `98%`,
+                margin: `2%`,
+                textDecoration: `none`,
+                borderStyle: `none`,
+                borderRadius: `50px`
+            }} value={searchFilter.toLowerCase()} onChange={filterByText.bind(this)} ></input>
 
             <button className="border centered" type="button" id="search"
               onClick={ () => console.log("clickyboi")}>o</button>

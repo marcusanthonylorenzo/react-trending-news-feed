@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,200;1,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@800&display=swap');
 
 
 * {
@@ -8,12 +9,14 @@
 
 h1 {
   font-size: 5rem;
-  font-family: 'Merriweather';
-  font-weight: 900;
+  font-family: 'Inconsolata';
+  opacity: 90%;
+  color: rgb(27, 8, 8);
 }
 
 h2 {
   font-size: 4rem;
+  margin: 0;
 }
 
 h4 {
@@ -27,9 +30,9 @@ h5 {
 
 #main-title {
   display: flex;
-  flex-direction: column;
-  width: 40vw;
-  justify-content: space-around;
+  flex-direction: row;
+  width: 50vw;
+  justify-content: left;
   align-items: center;
   margin: 0 auto;
   font-style: italic;
@@ -45,8 +48,9 @@ h5 {
   display: "flex";
   margin: 0 auto;
   flex-direction: column;
-  height: 100%;
-  width: 100vw;
+  height: 50vh;
+  /* width: 70%; */
+
 }
 
 .columnize {
@@ -97,6 +101,11 @@ General styling classes
 
 ***/
 
+.flexed {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
 
 .centered {
   display: flex;
@@ -139,6 +148,12 @@ General styling classes
   height: 5em;
 }
 
+#search:hover {
+  opacity: 40%;
+  transform: scale(0.95);
+  border: 1px solid chocolate;
+}
+
 .header {
   display: flex;
   width: 100%;
@@ -160,13 +175,12 @@ General styling classes
 }
 
 
-
 .header-search {
   display: flex;
-  height: 3rem;
+  height: 4rem;
   width: 40rem;
   padding: 1%;
-  margin: 0 2%;
+  margin: 5% 2%;
 }
 
 .header h2 {
@@ -187,23 +201,45 @@ General styling classes
 NAV
 ***/
 
+.notes {
+  width: 9vw;
+  height: 20%;
+  margin: 52vh 0;
+  padding: 2%;
+  margin-left: 4%;
+  position: fixed;
+  transform: scale(0.8);
+  opacity: 90%;
+}
+
+.notes:hover {
+  color:rgba(228, 83, 31, 0.915);
+  cursor: grab;
+}
 
 .navbar {
   display: flex;
-  width: 80vw;
-  height: 5vh;
+  flex-direction: column;
+  position: fixed;
+  margin-right: 0;
+  align-items: left;
+  height: 90vh;
+  width: 100%;
   transform: scale(0.9);
+  opacity: 90%;
 }
 
 .nav-links-wrap {
   background-color: rgba(250, 250, 250, 0.824);
-  width: 50%;
-  height: 90%;
+  height: min-content;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
 }
 
 .nav-links-items {
-  width: 70%;
   height: 80%;
+  width: fit-content;
 }
 
 /* .scrolling-section::-webkit-scrollbar {
@@ -223,10 +259,15 @@ NAV
 .filter-news {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  position: relative;
   text-align: left;
-  padding: 3%;
+  margin-top: 15vh;
+  padding: 4%;
+  padding-left: 5%;
+  height: 50%;
   gap: 1em;
+  transform: scale(0.75);
+  border-top: 1px solid rgba(0, 0, 0, 0.7);
 }
 
 /*** 
@@ -236,7 +277,7 @@ Content Cards
 .content-area {
   background-color: rgba(255, 250, 250, 0.801);
   margin-top: 10%;
-  transform: scale(0.72);
+  transform: scale(0.8);
   opacity: 20%;
 }
 
@@ -254,7 +295,7 @@ Content Cards
 
 .content-news:hover {
   opacity: 70%;
-  cursor: pointer;
+  cursor: default;
 }
 
 .content-header {
@@ -317,38 +358,13 @@ Media Queries
   }
 
   .container {
-    margin-top: 5vh;
+    margin-top: 2vh;
   }
 
   
-  .navbar {
-    display: flex;
-    flex-direction: column;
-    height: 8vh;
-    width: 90%;
-    margin: 1% auto;
-    overflow: auto;
+  .navbar, .notes {
+    display: none;
   }
-
-  .nav-links-items {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 2% auto;
-    padding: 1%;
-  }
-
-  .nav-link-item {
-    font-size: 3rem;
-    margin: 5% auto;
-  }
-
-  .nav-link-item:hover {
-    color:rgba(228, 83, 31, 0.915);
-    font-size: 3rem;
-    margin: 5% auto;
-  }
-
 
 
   /***
@@ -356,6 +372,12 @@ Media Queries
   Content
 
   ***/
+
+  
+  #main-title {
+    display: flex;
+    flex-direction: column;
+  }
 
   .filter-news{
     display: grid;
@@ -401,34 +423,32 @@ Media Queries
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* background-color: rgb(254, 254, 254, 0.875);
-    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.7); */
     height: 100%;
     width: 100vw;
     opacity: 95%;
   }
 
   .container {
-    margin-top: 5vh;
+    margin-top: 1vh;
   }
 
   
-  /* .navbar {
+  .navbar {
     display: flex;
     flex-direction: column;
     height: 8vh;
     width: 90%;
     margin: 1% auto;
     overflow: auto;
-  } */
-/* 
+  } 
+
   .nav-links-items {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     margin: 2% auto;
     padding: 1%;
-  } */
+  }
 
   .nav-link-item {
     font-size: 3rem;
@@ -441,6 +461,10 @@ Media Queries
     margin: 5% auto;
   }
 
+  
+  .navbar, .notes {
+    display: none;
+  }
 
 
   /***
@@ -448,6 +472,12 @@ Media Queries
   Content
 
   ***/
+
+  
+  #main-title {
+    display: flex;
+    flex-direction: row;
+  }
 
 
   .filter-news{
@@ -465,7 +495,6 @@ Media Queries
     display: flex;
     flex-direction: row;
     width: 100%;
-    /* flex-direction: column-reverse; */
   }
 
   .content-header {
@@ -503,13 +532,13 @@ Media Queries
   }
 
   .container {
-    margin-top: 5vh;
+    margin-top: 1vh;
   }
 
   
   .navbar {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     height: 8vh;
     width: 60vw;
     margin: 1% auto;
@@ -517,8 +546,6 @@ Media Queries
   }
 
   .nav-links-items {
-    /* display: flex;
-    flex-direction: column; */
     justify-content: flex-start;
     margin: 2% auto;
     padding: 1%;
@@ -526,7 +553,7 @@ Media Queries
 
   .nav-link-item {
     font-size: 3rem;
-    margin: 5% auto;
+    margin: 2% auto;
   }
 
   .nav-link-item:hover {
@@ -535,6 +562,9 @@ Media Queries
     margin: 5% auto;
   }
 
+  .notes {
+    display: flex;
+  }
 
 
   /***
@@ -543,20 +573,25 @@ Media Queries
 
   ***/
 
+  
+  #main-title {
+    display: flex;
+    flex-direction: column;
+  }
+
   .navbar {
     display: flex;
-    /* flex-direction: column; */
-    width: 60vw;
-    height: 8vh;
-    margin: 1% auto;
+    justify-content: center;
+    align-items: center;
+    width: 13vw;
+    height: 40vh;
+    margin: 15vh 2vw;
     overflow: auto;
   }
 
   .nav-links-items {
     display: flex;
-    /* flex-direction: column; */
-    justify-content: flex-start;
-    margin: 2% auto;
+    margin: 1% auto;
     padding: 1%;
   }
 
@@ -568,7 +603,7 @@ Media Queries
 
   .filter-news{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 0;
     margin: 0;
   }
@@ -581,7 +616,6 @@ Media Queries
     display: flex;
     flex-direction: row;
     width: 100%;
-    /* flex-direction: column-reverse; */
   }
 
   .content-header {
@@ -590,7 +624,7 @@ Media Queries
 }
 
 
-@media screen and (min-width: 1600px)
+@media screen and (min-width: 1660px)
 {
 
   header, .header-inner {
@@ -614,6 +648,12 @@ Media Queries
 
   .content-header {
     padding: 5%;
+  }
+
+  
+  #main-title {
+    display: flex;
+    flex-direction: row;
   }
 }
 

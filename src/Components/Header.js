@@ -21,27 +21,6 @@ const Header = () => {
           <h1>Realtime NYC Headlines</h1>
         </div>
 
-
-        {/* <div className="header-search border-inset centered">
-          <input className="" id="searchbox" type="text" placeholder="Search articles" style={{
-            fontSize: `20px`,
-            width: `80%`,
-            margin: `2%`,
-            textDecoration: `none`,
-            borderStyle: `none`
-          }}></input>
-
-          <button className="border centered" type="button" id="search"
-            onClick={ () => {
-              console.log("clickyboi")
-            }
-            }>
-            o
-          </button>
-
-        </div> */}
-
-
         <div className={"header-stats"}>
           <h4>{getDate}</h4>
           <h2>{getTime}</h2>

@@ -1,3 +1,4 @@
+import React from 'react'
 import './App.css';
 import Nav from './Components/Nav'
 import Content from './Components/Content'
@@ -7,15 +8,16 @@ import Header from './Components/Header'
 function App() {
 
 
-  //Pass this down as a template CSS styling
+  // //Pass this down as a template CSS styling
   const gridColumnStyling = {
-    display: "grid",
-    gridTemplateColumns: `1fr`,
-    height: `80vh`,
+    display: `flex`,
+    flexDirection: 'column',
+    margin: `auto`,
+
+    height: `50vh`,
     width: `80vw`,
     backgroundColor: `white`,
     opacity: `99%`,
-    margin: `0`,
   }
 
 
@@ -25,9 +27,14 @@ function App() {
 
         <Header />
         
-        <div className="container centered">
+        <div className="container flexed">
+
+          <div className="notes columnized border centered">
+            <h5 style={{textAlign: 'left'}}>NY Times API. Search by subject. Links do not work. Just some UI fun.</h5>
           
-          <Nav />
+          </div>
+
+          <Nav/>
           <Content gridColumnStyling={gridColumnStyling} />
 
         </div>
@@ -37,3 +44,8 @@ function App() {
 }
 
 export default App;
+
+
+
+
+

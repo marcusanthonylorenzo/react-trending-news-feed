@@ -9,8 +9,9 @@ const Nav = () => {
       
       return (
 
-        <div className="nav-link-item centered itemHover" key={link} style={{
+        <div className="nav-link-item itemHover" key={link} style={{
           display: 'flex',
+          flexDirection: 'column',
           margin: `0 3%`,
           padding: `1%`,
           height: `100%`,
@@ -25,11 +26,11 @@ const Nav = () => {
   }
 
   return (
-    <div className={"navbar border-inset"}>
-      <section className="navbar centered">
-
-        <div className="nav-links-wrap centered">
-          <div className="nav-links-items centered">
+    <div className={"navbar border border-inset"}>
+          
+      <section className="navbar">
+        <div className="nav-links-wrap">
+          <div className="nav-links-items">
             {navLinksMap()}
           </div>
         </div>
