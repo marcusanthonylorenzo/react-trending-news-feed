@@ -30,7 +30,9 @@ function App() {
         <div className="container flexed">
 
           <div className="notes columnized border centered">
-            <h5 style={{textAlign: 'left'}}>NY Times API. Search by subject.{/*-Links do not work.*/} Just some UI fun.</h5>
+            <div className="notes-baby-box">
+              <h5 style={{textAlign: 'left'}}>NY Times API. Search by subject.{/*-Links do not work.*/} Just some UI fun.</h5>
+            </div>
           
           </div>
 

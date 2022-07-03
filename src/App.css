@@ -157,6 +157,7 @@ General styling classes
 .header {
   display: flex;
   width: 100%;
+  background-color: rgba(255, 244, 244, 0.8);
 }
 
 .header-inner {
@@ -203,13 +204,17 @@ NAV
 
 .notes {
   width: 9vw;
-  height: 20%;
+  height: 100%;
   margin: 52vh 0;
   padding: 2%;
   margin-left: 4%;
   position: fixed;
   transform: scale(0.8);
   opacity: 90%;
+}
+
+.notes-baby-box {
+  height: 100%;
 }
 
 .notes:hover {
@@ -223,9 +228,10 @@ NAV
   position: fixed;
   margin-right: 0;
   align-items: left;
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   transform: scale(0.9);
+  background-color:rgba(255, 244, 244, 0.8);
   opacity: 90%;
 }
 
@@ -239,7 +245,7 @@ NAV
 
 .nav-links-items {
   height: 80%;
-  width: fit-content;
+  width: 100%
 }
 
 /* .scrolling-section::-webkit-scrollbar {
@@ -275,7 +281,7 @@ Content Cards
 ***/
 
 .content-area {
-  background-color: rgba(255, 250, 250, 0.801);
+  background-color: rgba(165, 133, 133, 0.801);
   margin-top: 10%;
   transform: scale(0.8);
   opacity: 20%;
@@ -343,6 +349,7 @@ Media Queries
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    background-color: rgba(255, 244, 244, 0.8);
   }
   
   .header-inner {
@@ -355,6 +362,7 @@ Media Queries
     height: 100%;
     width: 100vw;
     opacity: 95%;
+    background-color: rgba(255, 244, 244, 0.8);
   }
 
   .container {
@@ -426,6 +434,7 @@ Media Queries
     height: 100%;
     width: 100vw;
     opacity: 95%;
+    background-color: rgba(200, 184, 184, 0.572);
   }
 
   .container {
@@ -518,6 +527,7 @@ Media Queries
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    background-color: rgba(255, 244, 244, 0.8);
   }
   
   .header-inner {
@@ -587,6 +597,7 @@ Media Queries
     height: 40vh;
     margin: 15vh 2vw;
     overflow: auto;
+    
   }
 
   .nav-links-items {
@@ -629,6 +640,7 @@ Media Queries
 
   header, .header-inner {
     display: flex;
+    background-color: rgba(255, 244, 244, 0.8);
   }
   .filter-news{
     display: grid;
@@ -665,6 +677,7 @@ Media Queries
 
   header, .header-inner {
     display: flex;
+    background-color: rgba(255, 244, 244, 0.8);
   }
 
   .filter-news{
@@ -694,6 +707,7 @@ Media Queries
   header, .header-inner {
     display: flex;
     flex-direction: row;
+    background-color: rgba(255, 244, 244, 0.8);
   }
 
   .filter-news{
