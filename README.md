@@ -1,7 +1,8 @@
-# Minimalist Trending News Feed with NY Times API
-#### (Work in progress - a project for personal use)
+# Minimalist Trending News Feed with NY Times API (MERN Stack)
+#### React, MongoDB, Express/Mongoose/Node
 
 ### Real-time rendering for real-time news.
+- Work in progress, especially UI.
 - Search function to sift articles.
 - Responsive albeit simple interface.
 
