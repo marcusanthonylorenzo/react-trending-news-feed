@@ -31,10 +31,10 @@ h5 {
 #main-title {
   display: flex;
   flex-direction: row;
-  width: 50vw;
-  justify-content: left;
+  width: 100%;
+  justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin-top: 5vh;
   font-style: italic;
   color:rgba(228, 83, 31, 0.915);
   transform: scale(1.4);
@@ -50,8 +50,6 @@ h5 {
   margin: 0 auto;
   flex-direction: column;
   height: 30vh;
-  /* width: 70%; */
-
 }
 
 .columnize {
@@ -133,6 +131,14 @@ General styling classes
   /* animation: grow-right 1s ease-in-out; */
 }
 
+
+
+/***
+
+Searchbar
+
+***/
+
 #searchbox {
   height: 50%;
 }
@@ -142,25 +148,28 @@ General styling classes
 }
 
 #search {
-  /* transform: scale(1); */
   border: none;
   cursor: pointer;
-  width: 15%;
+  width: 16%;
   height: 5em;
 }
 
 #search:hover {
   opacity: 40%;
-  transform: scale(0.95);
+  transform: scale(0.99);
   border: 1px solid chocolate;
+}
+
+#search:active {
+  opacity: 70%;
+  transform: scale(0.91);
 }
 
 .header {
   display: flex;
-  /* position: fixed; */
+  position: sticky;
   width: 100%;
   height: 25vh;
-  /* background-color: rgba(234, 219, 219, 0.3); */
   background-image: url('https://media.istockphoto.com/vectors/new-york-city-skyline-single-line-vector-illustration-vector-id1151839057?k=20&m=1151839057&s=612x612&w=0&h=laLfx2MjPn1TzBFuup95ofz8YhJLjf7tfYDQBJAUcHQ=');
 }
 
@@ -184,9 +193,9 @@ General styling classes
 .header-search {
   display: flex;
   height: 4rem;
-  width: 40rem;
+  width: 50rem;
   padding: 1%;
-  margin: 5% 2%;
+  margin: 3% 2%;
 }
 
 .header-search input:hover {
@@ -210,7 +219,9 @@ General styling classes
 }
 
 /***
+
 NAV
+
 ***/
 
 .notes {

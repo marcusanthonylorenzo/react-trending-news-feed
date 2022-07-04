@@ -8,16 +8,6 @@ import Header from './Components/Header'
 
 function App() {
 
-  const [users, setUsers] = useState();
-
-  useEffect(() => {
-    axios.get('http://localhost:3002/getUsers')
-      .then (response => {
-        console.log(response)
-        setUsers(response)
-      });
-
-  }, [])
 
   // //Pass this down as a template CSS styling
   const gridColumnStyling = {
@@ -36,7 +26,9 @@ function App() {
 
       <div className="App">
 
+
         <Header />
+
         
         <div className="container flexed">
 
@@ -44,13 +36,14 @@ function App() {
             <div className="notes-baby-box">
               <h5 style={{textAlign: 'left'}}>NY Times API. Search by subject.{/*-Links do not work.*/} Just some UI fun.</h5>
             </div>
-          
           </div>
 
           <Nav/>
           <Content gridColumnStyling={gridColumnStyling} />
 
         </div>
+
+
 
       </div>
   );

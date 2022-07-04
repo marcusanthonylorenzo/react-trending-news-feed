@@ -5,6 +5,7 @@ import MongoAPI from './MongoAPI';
 
 
 const Content = (props) => {
+  
 
   const [searchFilter, setSearchFilter] = useState("");
   const [animate, setAnimate] = useState("");
@@ -12,22 +13,26 @@ const Content = (props) => {
   const [articlesReset, setArticlesReset] = useState([articles])
 
 
-  // //handle change to delay onChange to the last character match
-
+  //store data in state
   useEffect(() => {
       Api()
       .then((response) => response.data.results)
       .then(res => setArticles(res))
   }, [])
 
+  //store backup in localStorage in case of internet issues
   useEffect(() => {
     localStorage.setItem("news", JSON.stringify(articles));
   })
 
+  //store history in database to persist indefinitely
   useEffect(() => {
     MongoAPI(articles);
   }, [articles])
-  
+
+
+
+  //filtering functions
   const filterByText = (event) => {
     let target = event.target.value;
     console.log(target)
@@ -63,13 +68,6 @@ const Content = (props) => {
     setAnimate(type);
   }
 
-  // const showDetails = (el) => {
-  //     return (
-  //     <div className="content-header-details">
-  //       <h4>Topic: <span id={`content-section`}>{el.section}</span></h4>
-  //       <h4>{el.byline}</h4>
-  //     </div>)
-  // }
 
 
   const mapNews = () => {
@@ -119,6 +117,7 @@ const Content = (props) => {
     })
   }
 
+
   return (
     <div className={`content-area centered`} style={props.gridColumnStyling}>
 
@@ -132,7 +131,7 @@ const Content = (props) => {
               e.preventDefault()
               console.log("subbed")
             }}>
-              
+
             <input className="" id="searchbox" type="text"
               placeholder="Search 'arts', 'us', 'politics'..."
               style={{

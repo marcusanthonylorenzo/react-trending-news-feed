@@ -1,16 +1,17 @@
 const express = require('express');
 const cors = require('cors');
-const app = express();
 const mongoose = require('mongoose');
 const UserModel = require('./models/Users.js');
 const ArticlesModel = require('./models/Articles.js');
-
+const app = express();
 
 app.use(express.json());
 app.use(cors());
 
 mongoose.connect("mongodb+srv://admin:epicodus@cluster0.bhljv.mongodb.net/news?retryWrites=true&w=majority");
 
+
+//no need for delete or update actions at this moment.
 
 
 //create endpoints for client requests, return model you want to send.
@@ -32,7 +33,9 @@ app.post("/addArticles", async (req, res) => {
   await newArticlesList.save();
   console.log(newArticlesList);
   res.json(newArticlesList);
+
 })
+
 
 
 
@@ -55,6 +58,7 @@ app.post("/addUser", async (req, res) => {
   await newUser.save();
 
   res.json(user);
+
 })
 
 
