@@ -1,45 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Nav = () => {
+const Nav = ({ navLinks, archive, setArchive }) => {
 
-  //once I have remote access to db, make requests to cloud, but I'm broke
-  const getNews = JSON.parse(localStorage.getItem("news"))
+  const [newArchive, setNewArchive] = useState([archive])
 
-  const navLinks = Array.from( 
-
-    //reduce localStorage array into new set, map "section" as keys in new set.
-    getNews
-    .reduce((news, obj) => {
-
-      //create function that is conditional to keywords and spacings in the future
-      switch (obj.section) {
-        case `us`: obj.section = "National";
-        break;
-        case `well`: obj.section = "Wellness";
-        break;
-        case `your-money`: obj.section = "Money";
-        break;
-        case `Nyregion`: obj.section = "NY Region";
-        break;
-        default: console.log(obj.section);
-        break;
-      }
-      return news.set(obj.section, obj);
-
-    }, new Map())
-
-    .values()
-
-  )
-
-  console.log(navLinks)
 
   const navLinksMap = () => {
     return navLinks.map( (link, i) => {
 
       //Isolate first character, capitalize (should I set into state?)
       link.section = link.section[0].toUpperCase() + link.section.slice(1)
-      console.log(link.section, link.section.slice(1))
 
 
       return (
@@ -57,7 +27,15 @@ const Nav = () => {
           <h5 style={{
             filter: `drop-shadow(5px 3px 5px rgba(30, 30, 30, 0.2))`,
             fontSize: `2.4rem`
-         }}>{link.section}</h5>
+         }} onClick={()=> {
+            console.log(link.section, newArchive, this)
+         }}>
+          
+          
+          {link.section}
+          
+          
+          </h5>
         </div>
 
       )
@@ -76,7 +54,11 @@ const Nav = () => {
 
         <div className="nav-links-wrap">
           <div className="nav-links-items">
-            {navLinksMap()}
+
+              { 
+                navLinksMap()
+              }
+
           </div>
         </div>
 

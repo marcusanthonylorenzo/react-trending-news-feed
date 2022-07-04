@@ -1,12 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
-import axios from 'axios';
 import Nav from './Components/Nav'
 import Content from './Components/Content'
 import Header from './Components/Header'
-// import { ChakraProvider, ThemeProvider, theme, CSSReset } from '@chakra-ui/react'
+import Api from './Components/Api'
+import MongoAPI from './Components/MongoAPI'
 
 function App() {
+
+
+  const [archive, setArchive] = useState([]);
+ 
+  //once I have remote access to db, make requests to cloud, but I'm broke
+  const articles = JSON.parse(localStorage.getItem("news"))
+  
+  //store data in state
+  useEffect(() => {
+
+      Api()
+      .then((response) => {
+        localStorage.setItem("news", JSON.stringify(response.data.results))
+        return response.data.results
+       })
+
+  }, [])
+
+  //store history in database to persist indefinitely
+  useEffect(() => {
+    setArchive(articles);
+    MongoAPI(articles);
+  }, [])
+
 
 
   // //Pass this down as a template CSS styling
@@ -22,13 +46,43 @@ function App() {
   }
 
 
+    const navLinks = Array.from( 
+  
+      //reduce localStorage array into new set, map "section" as keys in new set.
+      articles
+      .reduce((news, obj) => {
+
+        //create function that is conditional to keywords and spacings in the future
+        switch (obj.section) {
+          case `us`: obj.section = "National";
+          break;
+          case `well`: obj.section = "Wellness";
+          break;
+          case `your-money`: obj.section = "Money";
+          break;
+          case `Nyregion`: obj.section = "NY Region";
+          break;
+          default:;
+          break;
+
+        }
+
+        return news.set(obj.section, obj);
+  
+      }, new Map())
+  
+      .values()
+  
+    )
+
+
+
   return (
 
       <div className="App">
 
 
         <Header />
-
         
         <div className="container flexed">
 
@@ -38,11 +92,10 @@ function App() {
             </div>
           </div>
 
-          <Nav/>
-          <Content gridColumnStyling={gridColumnStyling} />
+          <Nav navLinks={navLinks} archive={archive} setArchive={setArchive}/>
+          <Content gridColumnStyling={gridColumnStyling} articles={articles} archive={archive} setArchive={setArchive}/>
 
         </div>
-
 
 
       </div>

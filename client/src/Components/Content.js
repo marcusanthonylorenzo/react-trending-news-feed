@@ -1,52 +1,25 @@
-import { React, useEffect, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
-import Api from './Api'
-import MongoAPI from './MongoAPI';
+
+const Content = ({ gridColumnStyling, articles, archive, setArchive }) => {
 
 
-const Content = (props) => {
-  
-
-  const [searchFilter, setSearchFilter] = useState("");
+  const [searchFilter, setSearchFilter] = useState([]);
   const [animate, setAnimate] = useState("");
-  const [articles, setArticles] = useState([]);
-  const [articlesReset, setArticlesReset] = useState([articles])
 
-
-  //store data in state
-  useEffect(() => {
-      Api()
-      .then((response) => response.data.results)
-      .then(res => setArticles(res))
-  }, [])
-
-  //store backup in localStorage in case of internet issues
-  useEffect(() => {
-    localStorage.setItem("news", JSON.stringify(articles));
-  })
-
-  //store history in database to persist indefinitely
-  useEffect(() => {
-    MongoAPI(articles);
-  }, [articles])
-
-
+  const [containArticles, setContainArticles] = useState(archive)
 
   //filtering functions
   const filterByText = (event) => {
     let target = event.target.value;
     console.log(target)
 
-    const filtered = articles.filter( (artic, i) => {
-      console.log(artic, target)
+    const filtered = archive.filter( (artic, i) => {
       if (artic.title.includes(target) || artic.section.includes(target) || artic.abstract.includes(target)){
         console.log(artic)
-        
       }
     })
-    setSearchFilter(filtered);
 
-    console.log(filtered)
 
     // let newList = articles.filter((index, i) => {
     //   const indexTheIndex = Object.values({...index})
@@ -72,7 +45,8 @@ const Content = (props) => {
 
   const mapNews = () => {
     
-    return articles.map( el => {
+    return archive.map( el => {
+
       return (
 
           <div key={uuidv4()}
@@ -99,13 +73,14 @@ const Content = (props) => {
 
 
                   <h2>{el.title}</h2>
-                  {/* {showDetails} */}
                   <h4>{el.published_date.slice(0, 10)}  at {el.published_date.slice(11, -9)}</h4>
                 </div>
 
 
                 <div className="">
-                  <img className="border" src={`${el.multimedia[1].url}`} alt="mediaIndex.caption"/>                  
+                  <img className="border"
+                    src={ el.multimedia !== null ? `${el.multimedia[1].url}` : ``}
+                    alt="mediaIndex.caption"/>                  
                 </div>
               </div>
 
@@ -119,7 +94,7 @@ const Content = (props) => {
 
 
   return (
-    <div className={`content-area centered`} style={props.gridColumnStyling}>
+    <div className={`content-area centered`} style={gridColumnStyling}>
 
 
       <div id="main-title">
@@ -143,7 +118,7 @@ const Content = (props) => {
                 borderStyle: `none`,
                 borderRadius: `50px`
             }}
-                value={searchFilter.toLowerCase()} onChange={filterByText.bind(this)}
+               onChange={filterByText.bind(this)}
                 
             ></input>
 
@@ -158,7 +133,9 @@ const Content = (props) => {
 
 
       <div className={`filter-news`}>
-          {mapNews()}
+              {
+                mapNews()
+              }  
       </div>
 
 

@@ -287,7 +287,10 @@ NAV
   scrollbar-width: none;  
 } */
 
+
 /***
+
+News Content Area
 
 ***/
 
@@ -308,7 +311,9 @@ NAV
 }
 
 /*** 
+
 Content Cards
+
 ***/
 
 .content-area {
@@ -319,7 +324,6 @@ Content Cards
 }
 
 .content-news {
-  /* background: rgba(165, 133, 133, 0.201); */
   padding: 2%;
   transform: scale(0.9);
 }
