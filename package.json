@@ -1,0 +1,23 @@
+{
+  "name": "react-trending-news-feed",
+  "version": "1.0.0",
+  "description": "- Work in progress, especially UI.\r - Search function to sift articles.\r - Responsive albeit simple interface.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcusanthonylorenzo/react-trending-news-feed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcusanthonylorenzo/react-trending-news-feed/issues"
+  },
+  "engines": {
+    "node": "v11.3.0"
+  },
+  "homepage": "https://github.com/marcusanthonylorenzo/react-trending-news-feed#readme"
+}
