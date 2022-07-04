@@ -2,13 +2,38 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
-const UserModel = require('./models/Users.js')
+const UserModel = require('./models/Users.js');
+const ArticlesModel = require('./models/Articles.js');
 
 
 app.use(express.json());
 app.use(cors());
 
 mongoose.connect("mongodb+srv://admin:epicodus@cluster0.bhljv.mongodb.net/news?retryWrites=true&w=majority");
+
+
+
+//create endpoints for client requests, return model you want to send.
+app.get("/getArticles", (req, res) => {
+  ArticlesModel.find({}, (err, result) => {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  })
+})
+
+app.post("/addArticles", async (req, res) => {
+
+  //create body, instantiate new model to store in db, await saving it
+  const articlesInList = req.body
+  const newArticlesList = new ArticlesModel(articlesInList);
+  await newArticlesList.save();
+  console.log(newArticlesList);
+  res.json(newArticlesList);
+})
+
 
 
 //create endpoints for client requests, return model you want to send.
@@ -31,6 +56,7 @@ app.post("/addUser", async (req, res) => {
 
   res.json(user);
 })
+
 
 
 app.listen(3002, () => console.log("Server running!"))

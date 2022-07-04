@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import Api from './Api'
-// import axios from 'axios'
+import MongoAPI from './MongoAPI';
 
 
 const Content = (props) => {
@@ -17,12 +17,17 @@ const Content = (props) => {
   useEffect(() => {
       Api()
       .then((response) => response.data.results)
-      .then(res => setArticles(res)) 
+      .then(res => setArticles(res))
   }, [])
 
-  useEffect(() => localStorage.setItem("news", JSON.stringify(articles)))
+  useEffect(() => {
+    localStorage.setItem("news", JSON.stringify(articles));
+  })
 
-
+  useEffect(() => {
+    MongoAPI(articles);
+  }, [articles])
+  
   const filterByText = (event) => {
     let target = event.target.value;
     console.log(target)
@@ -71,16 +76,20 @@ const Content = (props) => {
     
     return articles.map( el => {
       return (
+
           <div key={uuidv4()}
             className={`content-news ${animate}`}
             style={{ display: `flex`}}
             onMouseEnter={()=> addAnimate("scale-left")}>
+
             <div className="inner-content" style={{
               display: `flex`,
               height: `100%`,
               width: `100%`,
               opacity: `95%`
             }}>
+              
+
               <div className="img-wrap">
                 <div className="img-wrap-title" style={{
                   display: `flex`,
@@ -93,7 +102,6 @@ const Content = (props) => {
 
                   <h2>{el.title}</h2>
                   {/* {showDetails} */}
-
                   <h4>{el.published_date.slice(0, 10)}  at {el.published_date.slice(11, -9)}</h4>
                 </div>
 
@@ -101,10 +109,11 @@ const Content = (props) => {
                 <div className="">
                   <img className="border" src={`${el.multimedia[1].url}`} alt="mediaIndex.caption"/>                  
                 </div>
-
-
               </div>
+
+
             </div> 
+
           </div> 
       )
     })
@@ -112,13 +121,18 @@ const Content = (props) => {
 
   return (
     <div className={`content-area centered`} style={props.gridColumnStyling}>
+
+
       <div id="main-title">
         <div className="header-search centered">
+
+
           <form className="header-search form border border-inset centered"
             onSubmit={(e) => {
               e.preventDefault()
               console.log("subbed")
             }}>
+              
             <input className="" id="searchbox" type="text"
               placeholder="Search 'arts', 'us', 'politics'..."
               style={{
@@ -138,13 +152,16 @@ const Content = (props) => {
               onClick={ () => console.log("clickyboi")}>o</button>
 
           </form>
-        </div>
 
+        </div>
       </div>
+
+
 
       <div className={`filter-news`}>
           {mapNews()}
       </div>
+
 
     </div>
   )

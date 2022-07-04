@@ -60,11 +60,11 @@ const Nav = () => {
   }
 
   return (
+
     <div className={"navbar border border-inset"}>
           
       <section className="navbar">
-
-              
+       
         <div className="trending-topics">
           <h2>Trending Topics</h2>
         </div>
@@ -76,7 +76,9 @@ const Nav = () => {
         </div>
 
       </section>
+      
     </div>
+
   )
 }
 
