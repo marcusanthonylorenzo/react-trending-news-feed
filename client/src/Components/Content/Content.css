@@ -1,0 +1,325 @@
+
+/***
+
+Searchbar
+
+***/
+
+#searchbox {
+  height: 50%;
+  width: 50%;
+  font-size: 20px;
+  width: 80%;
+  height: 98%;
+  margin: 2%;
+  text-decoration: none;
+  border-style: none;
+  border-radius: 50px;
+}
+
+#searchbox:focus {
+  outline: none;
+}
+
+#search {
+  border: none;
+  cursor: pointer;
+  width: 16%;
+  height: 5em;
+}
+
+#search:hover {
+  opacity: 40%;
+  transform: scale(0.99);
+  border: 1px solid chocolate;
+}
+
+#search:active {
+  opacity: 70%;
+  transform: scale(0.91);
+}
+
+
+/***
+
+News Content Area
+
+***/
+
+
+.filter-news {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: left;
+  margin-top: 15vh;
+  padding: 4%;
+  padding-left: 5%;
+  padding-top: 9%;
+  height: 50%;
+  gap: 1em;
+  transform: scale(0.75);
+  border-top: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(165, 133, 133, 0.801);
+  margin: 10%;
+  transform: scale(0.8);
+}
+
+.content-news {
+  padding: 2%;
+  transform: scale(0.9);
+}
+
+.content-news h2, .content-news h4 {
+  color: white;
+  width: fit-content;
+  padding: 1%;
+}
+
+.content-news:hover {
+  opacity: 70%;
+  cursor: default;
+}
+
+.content-header {
+  padding: 2% 3%;
+}
+
+#content-section {
+  color: aliceblue;
+  font-size: 3rem;
+}
+
+.img-wrap, .inner-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.img-wrap-title {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.inner-content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  opacity: 95%;
+}
+
+
+
+@media screen and (min-width: 300px)
+{
+
+  /***
+
+  Content
+
+  ***/
+
+  
+  #main-title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter-news{
+    display: grid;
+    grid-template-columns: 1fr ;
+    gap: 0;
+    margin: 0;
+  }
+
+  .filter-news > * {
+    transform: scale(0.8);
+  }
+
+  .content-news {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .content-header {
+    padding: 5%;
+  }
+}
+
+
+@media screen and (min-width: 600px) {
+
+  .filter-news {
+    transform: scale(1.3);
+    border-top: none;
+  }
+
+}
+
+
+@media screen and (min-width: 900px) {
+
+
+  .trending-topics h2 {
+    display: flex;
+  }
+  
+  /***
+
+  Content
+
+  ***/
+
+  
+  #main-title {
+    display: flex;
+    flex-direction: row;
+  }
+
+
+  .filter-news{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 0;
+    transform: scale(0.9);
+    border-top: 1px solid rgba(30, 30, 30, 0.6);
+  }
+
+  .filter-news > * {
+    transform: scale(0.9);
+    /* padding-top: 10%; */
+  }
+
+  .content-news {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .content-header {
+    padding: 5%;
+  }
+
+}
+
+
+@media screen and (min-width: 1330px)
+{
+
+  #main-title {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .filter-news{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 0;
+  }
+
+  .filter-news > * {
+    transform: scale(0.9);
+  }
+
+  .content-news, .img-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .content-header {
+    padding: 5%;
+  }
+}
+
+
+
+@media screen and (min-width: 1660px)
+{
+
+  .filter-news{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 0;
+    /* transform: scale(0.9); */
+  }
+
+  .filter-news > * {
+    transform: scale(0.9);
+  }
+
+  .content-news {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .content-header {
+    padding: 5%;
+  }
+
+  
+  #main-title {
+    display: flex;
+    flex-direction: row;
+  }
+
+}
+
+
+@media screen and (min-width: 1900px)
+{
+
+  .filter-news{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    transform: scale(0.8);
+  }
+
+  .filter-news > * {
+    transform: scale(0.83);
+  }
+
+  .content-news {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .content-header {
+    padding: 5%;
+  }
+
+}
+
+@media screen and (min-width: 2350px)
+{
+  .filter-news{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .filter-news > * {
+    transform: scale(0.8);
+  }
+
+  .content-news {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .content-header {
+    padding: 5%;
+  }
+
+}

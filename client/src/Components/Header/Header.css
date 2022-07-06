@@ -1,0 +1,179 @@
+
+
+.header {
+  display: flex;
+  position: sticky;
+  width: 100%;
+  height: 15vh;
+  background-image: url('https://media.istockphoto.com/vectors/new-york-city-skyline-single-line-vector-illustration-vector-id1151839057?k=20&m=1151839057&s=612x612&w=0&h=laLfx2MjPn1TzBFuup95ofz8YhJLjf7tfYDQBJAUcHQ=');
+  background-size: contain;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.3);
+  height: 12vh;
+  width: 100vw;
+  opacity: 90%;
+}
+
+.header-inner > * {
+  margin: 0 2%;
+  opacity: 70%;
+}
+
+
+.header-search {
+  display: flex;
+  height: 4rem;
+  width: 80%;
+  padding: 1%;
+  margin: 3% 2%;
+}
+
+.header-search input:hover {
+  opacity: 60%;
+}
+
+.header-stats h4 {
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+
+
+@media screen and (min-width: 300px){
+
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    /* background-color: rgba(255, 244, 244, 0.8); */
+  }
+  
+  .header-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* width: 100vw; */
+    opacity: 95%;
+    /* background-color: rgba(255, 244, 244, 0.8); */
+  }
+
+  .header-stats {
+    display: none;
+  }
+
+  .header-search {
+    width: 100%;
+    height: 80%;
+  }
+
+  .header-search form input {
+    background-color: transparent;
+  }
+
+}
+
+@media screen and (min-width: 600px) {
+
+  .header-search {
+    width: 70vw;
+    height: 80%;
+  }
+
+}
+
+@media screen and (min-width: 900px) {
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  
+  .header-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100vw;
+    opacity: 95%;
+    /* background-color: rgba(200, 184, 184, 0.572); */
+  }
+
+  .header-search {
+    width: 100%;
+    height: 5rem;;
+  }
+
+  .header-search form input {
+    background-color: transparent;
+  }
+
+}
+
+
+@media screen and (min-width: 1330px)
+{
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    /* background-color: rgba(255, 244, 244, 0.8); */
+  }
+  
+  .header-inner {
+    display: flex;
+    flex-direction: row;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100vw;
+    opacity: 95%;
+  }
+
+}
+
+@media screen and (min-width: 1660px)
+{
+
+  header, .header-inner {
+    display: flex;
+    /* background-color: rgba(255, 244, 244, 0.8); */
+  }
+
+}
+
+@media screen and (min-width: 1900px)
+{
+
+  header, .header-inner {
+    display: flex;
+    /* background-color: rgba(255, 244, 244, 0.8); */
+  }
+
+}
+
+
+@media screen and (min-width: 2350px)
+{
+
+  header, .header-inner {
+    display: flex;
+    flex-direction: row;
+    opacity: 60%;
+    /* background-color: rgba(255, 244, 244, 0.8); */
+  }
+}

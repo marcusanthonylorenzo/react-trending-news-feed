@@ -13,7 +13,6 @@ mongoose.connect("mongodb+srv://admin:epicodus@cluster0.bhljv.mongodb.net/news?r
 
 //no need for delete or update actions at this moment.
 
-
 //create endpoints for client requests, return model you want to send.
 app.get("/getArticles", (req, res) => {
   ArticlesModel.find({}, (err, result) => {
